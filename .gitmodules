@@ -1,0 +1,6 @@
+[submodule "CmdParser"]
+	path = CmdParser
+	url = https://github.com/FlorianRappl/CmdParser.git
+[submodule "json"]
+	path = json
+	url = https://github.com/nlohmann/json.git
