@@ -67,7 +67,7 @@ public:
     char        value_separator                 = ',';
 
     Argument() {};
-    Argument(ParamValue* storage, ParamType type, const string& regex_pattern = "", bool required=false, map<string, ParamValue>* possible_values = nullptr, multivalue=false)
+    Argument(ParamValue* storage, ParamType type, const string& regex_pattern = "", bool required=false, map<string, ParamValue>* possible_values = nullptr, bool multivalue=false)
     {
         this->pStorage = storage;
         this->type = type;
