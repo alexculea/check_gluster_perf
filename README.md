@@ -16,7 +16,7 @@ Gluster FS Performance Check is a small utility that reads the JSON latency dump
 
 ### Installation
 
-Copy the generated binary to a sensible location on your system. Usually /var/lib/nagios/plugins.
+Copy the generated binary to a sensible location on your system. Usually /usr/lib/nagios/plugins.
 Make sure it has execution rights for the nagios user eg:
 
     chown nagios:nagios check_gluster_perf
