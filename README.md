@@ -62,7 +62,7 @@ Not setting the said filter has unexpected results. A fix is scheduled for the n
 
         -f	--filter
         Regular expression (ECMAScript grammar, case insesitive) filter. If given, only the metrics that fully match the pattern will be considered for evaluation and reporting.
-        This parameter is optional. The default value is '.*'.
+        This parameter is optional. The default value is '.*usec'.
 
         -apply-on-total-avg	
         If set to true, the thresholds are applied to the total average of all metrics instead of each metric.
@@ -91,8 +91,7 @@ Not setting the said filter has unexpected results. A fix is scheduled for the n
         -V	--version
         Show program version.
         This parameter is optional. The default value is '0'.
-
-
+        
 # License
 
 This is free and unencumbered software released into the public domain.
