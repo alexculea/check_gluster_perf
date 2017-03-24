@@ -28,7 +28,7 @@ If you're using Icinga2, see the util directory for the command file.
 
 Before going into details it is worth noting that the program was designed to check time-based values. The GlusterFS dump (3.8 at the time of the writing) also has several integer based statistics. **It's strongly recommended** that a filter (-f) is used to take into account only the metrics that hold such values. An efective filter could be "\*.usec" because of how the metrics are reported by Gluster. The default value of -f is in fact "\*.usec".
 
-Not setting the said filter has unexpected causes. A fix is scheduled for the next release.
+Not setting the said filter has unexpected results. A fix is scheduled for the next release.
 
 ### Quick start
 
