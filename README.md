@@ -37,7 +37,7 @@ To enable JSON dumps with GlusterFS (3.8 or newer) do:
     gluster volume set <volname> diagnostics.stats-dump-interval 300 # every 5 min
     gluster volume set <volname> diagnostics.latency-measurement 1
 
-It's a good idea to check /var/lib/glusterd/<volname>/stats if the dump is being generated.
+It's a good idea to check /var/lib/glusterd/\<volname\>/stats if the dump is being generated.
 
 ### Quick start
 
