@@ -93,7 +93,7 @@ Not setting the said filter has unexpected results. A fix is scheduled for the n
         This parameter is optional. The default value is '0'.
 
 
-# Licence
+# License
 
 This is free and unencumbered software released into the public domain.
 
