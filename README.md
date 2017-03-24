@@ -16,7 +16,7 @@ Gluster FS Performance Check is a small utility that reads the JSON latency dump
 
 ### Installation
 
-Copy the generated binary to a sensible location on your system. Usually /var/lib/nagios-plugins.
+Copy the generated binary to a sensible location on your system. Usually /var/lib/nagios/plugins.
 Make sure it has execution rights for the nagios user eg:
 
     chown nagios:nagios check_gluster_perf
@@ -24,16 +24,34 @@ Make sure it has execution rights for the nagios user eg:
 
 If you're using Icinga2, see the util directory for the command file.
 
-## Usage
+## Known issue
 
-Before going into details it is worth noting that the program was designed to check time-based values. The GlusterFS dump (3.8 at the time of the writing) also has several integer based statistics. **It's strongly recommended** that a filter (-f) is used to take into account only the metrics that hold such values. An efective filter could be "\*.usec" because of how the metrics are reported by Gluster. The default value of -f is in fact "\*.usec".
+The program was designed to check time-based values. The GlusterFS dump (3.8 at the time of the writing) also has several integer based statistics. **It's strongly recommended** that a filter (-f) is used to take into account only the metrics that hold such values. An efective filter could be "\*.usec" because of how the metrics are reported by Gluster. The default value of -f is in fact "\*.usec".
 
 Not setting the said filter has unexpected results. A fix is scheduled for the next release.
+
+### Prepare GlusterFS
+
+To enable JSON dumps with GlusterFS (3.8 or newer) do:
+
+    gluster volume set <volname> diagnostics.stats-dump-interval 300 # every 5 min
+    gluster volume set <volname> diagnostics.latency-measurement 1
+
+It's a good idea to check /var/lib/glusterd/<volname>/stats if the dump is being generated.
 
 ### Quick start
 
     check_gluster_perf -w 100 -c 120 -vol glusterfs_volume
+    # Checks all time-based metrics in the dump file for the volume <glusterfs_volume>. Reports OK if all are under 100 warn, 120 crit microseconds (usec)
 
+    check_gluster_perf -w 40 -c 50 -u ms -vol glusterfs_volume -f .*aggr.*latency_ave.*usec
+    # Checks all aggregated average latency metrics. Reports OK if all are under 40 warn, 50 crit; miliseconds
+
+    check_gluster_perf -w 40 -c 50 -u ms -vol glusterfs_volume -f .*aggr.*latency_ave.*usec -apply-on-total-avg	1
+    # Makes a total average of all aggregated latency average metrics and applies the warning/critical thresholds to that total average only.
+
+    check_gluster_perf -w 40 -c 50 -u ms -vol glusterfs_volume -f .*aggr.*latency_ave.* -dump-max-age-seconds 600
+    # Complains CRITICAL'lly only if the dump file is older than 10 minutes. 5 minutes is the default.
 
 ### Supported Parameters
 
