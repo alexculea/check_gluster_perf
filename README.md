@@ -44,7 +44,7 @@ If you get this when trying to run:
     ./check_gluster_perf: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./check_gluster_perf_x64)
     ./check_gluster_perf: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./check_gluster_perf_x64)
 
-it means your libstdc++ installed is too old. You need to install GCC 5.1.0 or newer or to update libstdc++
+it means your libstdc++ installed is too old. You need to install GCC 5.1.0 or newer or to update libstdc++. If you cannot do any of these, use `make static`
 
 ### Prepare GlusterFS
 
