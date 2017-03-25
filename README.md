@@ -7,11 +7,11 @@ Gluster FS Performance Check is a small utility that reads the JSON latency dump
 - UNIX system
 
 ### Build Dependencies
--GCC 6.2+
+-GCC 6+
 
 ### Building
 
-    git clone https://github.com/alexculea/check_gluster_perf.git
+    git clone --recursive https://github.com/alexculea/check_gluster_perf.git
     make 
 
 or
