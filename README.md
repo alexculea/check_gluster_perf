@@ -116,6 +116,10 @@ It's a good idea to check /var/lib/glusterd/\<volname\>/stats if the dump is bei
         Show program version.
         This parameter is optional. The default value is '0'.
         
+# Contributing
+
+Any bug report/PR is welcome.
+
 # License
 
 This is free and unencumbered software released into the public domain.
