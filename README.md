@@ -30,11 +30,21 @@ Make sure it has execution rights for the nagios user eg:
 
 If you're using Icinga2, see the util directory for the command file.
 
-## Known issue
+## Known issues
 
+### Non time based metrics
 The program was designed to check time-based values. The GlusterFS dump (3.8 at the time of the writing) also has several integer based statistics. **It's strongly recommended** that a filter (-f) is used to take into account only the metrics that hold such values. An efective filter could be "\*.usec" because of how the metrics are reported by Gluster. The default value of -f is in fact "\*.usec".
 
 Not setting the said filter has unexpected results. A fix is scheduled for the next release.
+
+### Runtime libstdc++ version mismatch
+
+If you get this when trying to run:
+
+    ./check_gluster_perf: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `CXXABI_1.3.9' not found (required by ./check_gluster_perf_x64)
+    ./check_gluster_perf: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by ./check_gluster_perf_x64)
+
+it means your libstdc++ installed is too old. You need to install GCC 5.1.0 or newer or to update libstdc++
 
 ### Prepare GlusterFS
 
@@ -115,7 +125,7 @@ It's a good idea to check /var/lib/glusterd/\<volname\>/stats if the dump is bei
         -V	--version
         Show program version.
         This parameter is optional. The default value is '0'.
-        
+
 # Contributing
 
 Any bug report/PR is welcome.
