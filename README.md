@@ -14,7 +14,7 @@ Gluster FS Performance Check is a small utility that reads the JSON latency dump
     git clone --recursive https://github.com/alexculea/check_gluster_perf.git
     make 
 
-or
+or if you cannot update GCC on the target machine:
 
     make static
 
